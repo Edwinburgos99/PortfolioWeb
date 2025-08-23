@@ -1,0 +1,22 @@
+---
+import JobCard from "./JobCard.astro";
+
+const JOBS: Job[] = [
+    {
+        date: "2022 - 2023",
+        title: "Administrador de base de datos",
+        description: "desempeño funciones de ingreso de datos nuevos a la base de datos PostgreSQL y monitoreo de que los datos dentro de la base de datos sean correctos",
+    },
+    {
+        date: "2022 - 2023",
+        title: "Administrador de base de datos",
+        description: "desempeño funciones de ingreso de datos nuevos a la base de datos PostgreSQL y monitoreo de que los datos dentro de la base de datos sean correctos",
+    },
+];
+
+---
+<ol class="relative border-s border-gray-200">
+    {
+        JOBS.map(job => <JobCard job={job}/>)
+    }
+</ol>

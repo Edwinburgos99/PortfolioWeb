@@ -1,0 +1,94 @@
+---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.astro';
+import Skill from '../components/Skill.astro';
+import JobTimeline from '../components/JobTimeline.astro';
+
+const SKILLS: Skill[] = [
+	{
+		name: "TailwindCSS",
+		iconurl: "/tailwindcss.svg"
+	},
+	{
+		name: "JavaScript",
+		iconurl: "/javascriptmn.png"
+	},
+	{
+		name: "HTML5",
+		iconurl: "/HTML5.svg"
+	},
+	{
+		name: "CSS3",
+		iconurl: "/CSS3.svg"
+	},
+	{
+		name: "Bootstrap",
+		iconurl: "/Bootstrap.svg"
+	},
+	{
+		name: "Git",
+		iconurl: "/Git.svg"
+	},
+	{
+		name: "Python",
+		iconurl: "/Python.svg"
+	},
+	{
+		name: "Excel",
+		iconurl: "/Excel.png"
+	},
+	{
+		name: "PowerBI",
+		iconurl: "/Power_BI.svg"
+	},
+	{
+		name: "Tableau",
+		iconurl: "/Tableau.png"
+	},
+	{
+		name: "SQL",
+		iconurl: "/sql.svg"
+	},
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Portafolio</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
+		<header class="h-dvh bg-[url('/Fondo.webp')] bg-cover bg-center flex flex-col">
+			<Navbar />
+			<div class="flex-1 flex flex-col justify-center items-center gap-4">
+				<h1 class="text-3xl md:text-4xl lg:text-6xl text-white text-center font-bold">Bienvenido a mi porfolio</h1>
+				<h2 class="text-2xl md:text-3xl lg:text-4xl text-white text-center">Soy analista de datos en Python y me llamo <span class="text-black">Edwin Burgos</span> </h2>
+		    </div>
+			<div class="flex justify-center mb-10">
+				<a href="#About" class="p-4 bg-custom-purple rounded-full">
+					<img src="/Flecha.svg" class="size-6 animate-bounce notion-reduce:animate-none" alt="arrow"/> 
+			    </a>
+		    </div>
+		</header>
+		<main>
+			<section id="about" class="pt-8 px-6 md:px-20 bg-white dark:bg-gray-900">
+				<article class="mb-6">
+					<h3 class="text-center text-2xl font-bold text-gray-800 dark:text-white font-bold">Habilidades</h3>
+			    </article>
+				<div class="flex justify-center -mt-2">
+					<span class="text-center text-gray-600 dark:text-gray-300">Estas son algunas de mis principales competencias técnicas</span>
+			    </div>
+				<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-items-center mt-6">{SKILLS.map(skill => <Skill skill={skill} />)}</div>
+				<article class="mt-8">
+					<h3 class="text-center text-2xl font-bold text-gray-800 dark:text-white">Experiencia</h3>
+				<div class="mt-2">
+				<JobTimeline />
+				</div>
+			</article>
+		</section>
+	</main>
+	</body>
+</html>
