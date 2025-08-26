@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from '../components/Navbar.astro';
 import Skill from '../components/Skill.astro';
 import JobTimeline from '../components/JobTimeline.astro';
+import Project from '../components/Project.astro';
 
 const SKILLS: Skill[] = [
 	{
@@ -50,6 +51,33 @@ const SKILLS: Skill[] = [
 		iconurl: "/sql.svg"
 	},
 ];
+
+const PROJECTS: Project[] = [
+	{
+		title: "Bot_Peliculas_IMDB",
+		urLImg: "/Bot_Telegram_Peliculas.png",
+		description: "Bot de Telegram desarrollado utilizando la API de OMDB (Open Movie Database), que permite obtener información detallada sobre películas. El bot permite buscar una película por su nombre exacto o encontrar múltiples resultados relacionados con una palabra clave.",
+		link: "https://github.com/Edwinburgos99/Bot_Peliculas_IMDB",
+		usedSkills: [
+			{
+				name: "Python",
+				iconurl: "/Python.svg"
+			},
+		],
+	},
+	{
+		title: "Concierto",
+		urLImg: "/Concierto.png",
+		description: "Ubicación optima de un concierto, basado en coordenadas de ciudades que siempre deben tener 2 posiciones enteras",
+		link: "https://github.com/Edwinburgos99/Concierto",
+		usedSkills: [
+			{
+				name: "Python",
+				iconurl: "/Python.svg"
+			},
+		],
+	},
+];
 ---
 
 <html lang="en">
@@ -91,6 +119,16 @@ const SKILLS: Skill[] = [
 				<JobTimeline />
 				</div>
 			</article>
+		</section>
+		<section id="Projects" class="max-w-screen-lg mx-auto grid place-content-center gap-4">
+			<div class="flex justify-center mt-6">
+				<h3 class="w-fit text-xl md:text-2xl lg:text-4xl font-semibold">Proyectos Destacables</h3>
+			</div>
+			<div class="w-full grid place-content-center gap-8">
+				{
+				PROJECTS.map((project, index) => <Project project={project} index={index}/>)
+				}
+			</div>
 		</section>
 	</main>
 	</body>

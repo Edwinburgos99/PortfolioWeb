@@ -8,3 +8,11 @@ type Job = {
   title: string;
   description: string;
 };
+
+type Project = {
+  title: string;
+  description: string;
+  usedSkills: skill[];
+  urLImg: string;
+  link: string;
+};
