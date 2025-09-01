@@ -1,10 +1,7 @@
 ---
-import "../styles/global.css";
-import Navbar from '../components/Navbar.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Skill from '../components/Skill.astro';
 import JobTimeline from '../components/JobTimeline.astro';
-import Project from '../components/Project.astro';
-import Footer from '../components/Footer.astro';
 
 const SKILLS: Skill[] = [
 	{
@@ -56,166 +53,45 @@ const SKILLS: Skill[] = [
 		iconurl: "/Astro.svg"
 	},
 ];
-
-const PROJECTS: Project[] = [
-	{
-		title: "Bot_Peliculas_IMDB",
-		urLImg: "/Bot_Peliculas_Telegram.png",
-		description: "Bot de Telegram desarrollado utilizando la API de OMDB (Open Movie Database), que permite obtener información detallada sobre películas.",
-		link: "https://github.com/Edwinburgos99/Bot_Peliculas_IMDB",
-		usedSkills: [
-			{
-				name: "Python",
-				iconurl: "/Python.svg"
-			},
-		],
-	},
-	{
-		title: "Concierto",
-		urLImg: "/Ubicacion_Optima_Concierto.png",
-		description: "Ubicación optima de un concierto, basado en coordenadas de ciudades que siempre deben tener 2 posiciones enteras.",
-		link: "https://github.com/Edwinburgos99/Concierto",
-		usedSkills: [
-			{
-				name: "Python",
-				iconurl: "/Python.svg"
-			},
-		],
-	},
-	{
-		title: "Angeles_del_Rio",
-		urLImg: "/Dashboard.png",
-		description: "El Proyecto consiste en el procesamiento y análisis de datos crudos, implementando dashboards dinámicos en Excel y Power BI para la visualización interactiva de la información.",
-		link: "https://github.com/Edwinburgos99/Angeles_del_Rio",
-		usedSkills: [
-			{
-				name: "PowerBI",
-				iconurl: "/Power_BI.svg"
-			},
-			{
-				name: "Excel",
-				iconurl: "/Excel.png"
-			},
-		],
-	},
-];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Portafolio</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
-		<header class="h-dvh bg-[url('/Fondo.webp')] bg-cover bg-center flex flex-col justify-center items-center mt-12">
-			<Navbar />
-			<div id="Start" class="flex flex-col justify-center items-center gap-10 mt-30 bg-white/10 backdrop-blur-md shadow-2xl rounded-2xl p-8 md:p-12 max-w-5xl text-center border border-white/20">
-				<h3 class="text-2xl md:text-3xl lg:text-4xl text-white text-center font-extrabold tracking-wide drop-shadow-lg">Gracias por visitar mi portafolio.<br>
-					<span class="dark:text-blue-500 italic">Soy Edwin Burgos Piraquive</span>, apasionado por transformar datos en conocimiento y desarrollar soluciones tecnológicas.  
-					<span class="dark:text-blue-500 italic">Encantado de tenerte aquí</span>
-				</h3>
-				<h4 class="text-base md:text-lg lg:text-2xl text-gray-200 text-center leading-relaxed max-w-4xl font-light">Soy Ingeniero de Sistemas especializado en análisis de datos. Me apasiona transformar grandes volúmenes de información en soluciones prácticas y estratégicas para las organizaciones. Mi enfoque combina conocimiento técnico con una visión analítica para aportar valor en cada proyecto.</h4>
-		    </div>
-			<div class="flex justify-center mb-10">
-				<a href="#About" class="p-4 bg-custom-purple rounded-full">
-					<img src="/Flecha.svg" class="size-6 animate-bounce notion-reduce:animate-none" alt="arrow"/> 
-			    </a>
-		    </div>
-		</header>
-		<main>
-			<section id="About" class="w-full min-h-screen pt-8 px-6 md:px-20 bg-cyan-900 shadow-xl py-4 lg:py-8">
-				<article class="mb-6 text-center">
-					<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mt-2">Habilidades Profesionales</h3>
-			    </article>
-				<div class="flex justify-center -mt-2">
-					<span class="text-center text-gray-500 dark:text-gray-300 text-lg font-light">Algunas de mis principales competencias técnicas</span>
-			    </div>
-				<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-items-center mt-6">{SKILLS.map(skill => <Skill skill={skill} />)}</div>
-				<article class="mt-8 text-center">
-					<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mt-2">Experiencia Laboral</h3>
-				<div>
-				<JobTimeline />
-				</div>
-			</article>
-		</section>
-		<section id="Projects" class="w-full px-6 md:px-20 bg-cyan-900 shadow-xl py-4">
-			<div class="flex justify-center">
-				<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mb-8">Proyectos Destacables</h3>
-			</div>
-			<div class="w-full grid place-content-center gap-8">
-				{
-				PROJECTS.map((project, index) => <Project project={project} index={index}/>)
-				}
-			</div>
-		</section>
-		<section id="Contact" class="relative min-h-[600px] py-12 w-full pt-8 px-6 md:px-20 bg-cyan-900 shadow-xl py-4 lg:py-8">
-  <div class="rounded-lg bg-black/20 border border-white/20 shadow-2xl py-4 lg:py-8 px-4 mx-auto max-w-screen-md backdrop-blur-md">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contacto</h2>
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-200 sm:text-xl">¿Quieres trabajar conmigo? Déjame un mensaje.</p>
-      <form id="contactForm" action="https://formspree.io/f/xwpnvbzw" method="POST" class="space-y-8">
-          <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-100 text-xl">Email</label>
-              <input type="email" id="email" name="email" class="block p-3 w-full text-md text-gray-800 bg-white rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="Correo@gmail.com" required>
-          </div>
-          <div>
-              <label for="subject" class="block mb-2 text-sm font-medium text-gray-100 text-xl">Asunto</label>
-              <input type="text" id="subject" name="subject" class="block p-3 w-full text-md text-gray-800 bg-white rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="Asunto" required>
-          </div>
-          <div class="sm:col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium text-gray-100 text-xl">Mensaje</label>
-              <textarea id="message" name="message" rows="6" class="block p-2.5 w-full text-md text-gray-800 bg-white rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Dejame un mensaje..."></textarea>
-          </div>
-		  <div class="flex flex-col items-center">
-			<button type="submit" class="py-3 px-6 text-sm font-medium text-center text-white rounded-lg bg-blue-500 hover:bg-blue-800 shadow-lg hover:shadow-3xl focus:ring-4 focus:outline-none focus:ring-blue-300 transition duration-300">Enviar Mensaje</button>
-		  </div>
-		  <p id="formStatus" class="text-center mt-4 text-lg font-medium"></p>
-      </form>
-	  <script>
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const statusMessage = document.getElementById("formStatus");
+<BaseLayout>
+  <header class="h-dvh bg-cover bg-center flex flex-col justify-center items-center mt-12">
+    <div id="Start" class="space-y-4">
+      <h3 class="dark:text-blue-400 italic text-4xl font-serif font-semibold" style="text-shadow: 4px 4px 8px rgba(0,0,0,0.7);">
+        Ingeniero de sistemas
+        <span class="text-white italic text-4xl font-serif font-semibold" style="text-shadow: 4px 4px 8px rgba(0,0,0,0.7);">
+          • Analista de datos
+        </span>
+      </h3>
+      <h4 class="text-white text-2xl font-semibold">
+        De los datos al conocimiento, de la tecnología a la transformación.
+      </h4>
+    </div>
+  </header>
 
-  if (!statusMessage) {
-  throw new Error("No se encontró el elemento #form-status en el DOM");
-}
+  <main>
+    <section class="w-full pt-8 px-6 md:px-20 shadow-xl py-4 lg:py-8">
+      <article class="mb-6 text-center">
+        <h3 class="text-center text-2xl md:text-3xl font-semibold tracking-wide dark:text-white relative inline-block mt-2">
+          Habilidades Profesionales
+        </h3>
+      </article>
 
-  if (form) { 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-items-center mt-6">
+        {SKILLS.map(skill => <Skill skill={skill} />)}
+      </div>
 
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
+      <article class="mt-8 text-center">
+        <h3 class="text-center text-2xl md:text-3xl font-semibold tracking-wide dark:text-white relative inline-block mt-2">
+          Experiencia Laboral
+        </h3>
+        <JobTimeline />
+      </article>
+    </section>
+  </main>
+</BaseLayout>
 
-        if (response.ok) {
-          statusMessage.textContent = "✅ Tu mensaje ha sido enviado correctamente.";
-          statusMessage.className = "text-gray-900 text-center mt-4 text-lg font-medium";
-          form.reset();
-        } else {
-          statusMessage.textContent = "❌ Ocurrió un error al enviar tu mensaje. Intenta nuevamente.";
-          statusMessage.className = "text-red-900 text-center mt-4 text-lg font-medium";
-        }
-      } catch (error) {
-        statusMessage.textContent = "❌ Error de conexión. Por favor, revisa tu internet.";
-        statusMessage.className = "text-red-500 text-center mt-4 text-lg font-medium";
-      }
-    });
-  }
-</script>
-	</div>
-</section>
-	</main>
-	<Footer />
-	</body>
-</html>
+
 
 
