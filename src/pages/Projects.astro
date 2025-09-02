@@ -14,6 +14,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
+		categories: ["Personal", "Backend", "Automatización / Bots"],
 	},
 	{
 		title: "Concierto",
@@ -26,6 +27,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
+		categories: ["Personal", "Algoritmos", "Backend"],
 	},
 	{
 		title: "Angeles_del_Rio",
@@ -42,14 +44,62 @@ const PROJECTS: Project[] = [
 				iconurl: "/Excel.png"
 			},
 		],
+		categories: ["Empresa", "Análisis de datos"],
+	},
+	{
+		title: "Opencv",
+		urLImg: "/Reconocimiento_autos.png",
+		description: "Repositorio de proyectos hechos con la librería OpenCV, que implementan algoritmos para el reconocimiento de rostros, detección de ojos y detección de automóviles.",
+		link: "https://github.com/Edwinburgos99/Opencv",
+		usedSkills: [
+			{
+				name: "Python",
+				iconurl: "/Python.svg"
+			},
+		],
+		categories: ["Personal", "IA / Visión por computadora"],
+	},
+	{
+		title: "Bot_Musica_Youtube",
+		urLImg: "/Bot_Peliculas_Telegram.png",
+		description: "Bot de telegram creado en base a la API de YouTube data para la búsqueda de canciones en base a un título o autor.",
+		link: "https://github.com/Edwinburgos99/Bot_Musica_Youtube",
+		usedSkills: [
+			{
+				name: "Python",
+				iconurl: "/Python.svg"
+			},
+		],
+		categories: ["Personal", "Backend", "Automatización / Bots"],
+	},
+	{
+		title: "Analisys_Data",
+		urLImg: "/Bot_Peliculas_Telegram.png",
+		description: "Transformación de datos crudos de Kaggle por medio del lenguaje Python e informes dinámicos usando softwares de negocios (Power BI, Excel).",
+		link: "https://github.com/Edwinburgos99/Analisys_Data",
+		usedSkills: [
+			{
+				name: "Python",
+				iconurl: "/Python.svg"
+			},
+			{
+				name: "PowerBI",
+				iconurl: "/Power_BI.svg"
+			},
+			{
+				name: "Excel",
+				iconurl: "/Excel.png"
+			},
+		],
+		categories: ["Personal", "Análisis de Datos"],
 	},
 ];
 ---
 
 <BaseLayout>
-	<section id="Projects" class="w-full px-6 md:px-20 shadow-xl py-4">
+	<section id="Projects" class="w-full px-6 md:px-20 shadow-xl py-4 mt-24">
 		<div class="flex justify-center">
-			<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mb-8">Proyectos Destacables</h3>
+			<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mb-8">Proyectos</h3>
 		</div>
 		<div class="w-full grid place-content-center gap-8">
 			{

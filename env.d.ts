@@ -15,4 +15,5 @@ type Project = {
   usedSkills: skill[];
   urLImg: string;
   link: string;
+  categories: string[];
 };
