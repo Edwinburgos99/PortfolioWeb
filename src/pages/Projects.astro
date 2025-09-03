@@ -14,7 +14,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
-		categories: ["Personal", "Backend", "Automatización / Bots"],
+		categories: ["Personal", "Backend", "Bots"],
 	},
 	{
 		title: "Concierto",
@@ -57,7 +57,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
-		categories: ["Personal", "IA / Visión por computadora"],
+		categories: ["Personal", "Visión por computadora"],
 	},
 	{
 		title: "Bot_Musica_Youtube",
@@ -70,7 +70,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
-		categories: ["Personal", "Backend", "Automatización / Bots"],
+		categories: ["Personal", "Backend", "Bots"],
 	},
 	{
 		title: "Analisys_Data",
@@ -91,9 +91,11 @@ const PROJECTS: Project[] = [
 				iconurl: "/Excel.png"
 			},
 		],
-		categories: ["Personal", "Análisis de Datos"],
+		categories: ["Personal", "Análisis de datos"],
 	},
 ];
+
+const ALL_CATEGORIES: string[] = ["Todos", ...new Set(PROJECTS.flatMap(p => p.categories))];
 ---
 
 <BaseLayout>
@@ -101,10 +103,46 @@ const PROJECTS: Project[] = [
 		<div class="flex justify-center">
 			<h3 class="text-center text-2xl md:text-3xl font-bold tracking-wide dark:text-white relative inline-block mb-8">Proyectos</h3>
 		</div>
-		<div class="w-full grid place-content-center gap-8">
-			{
-			PROJECTS.map((project, index) => <Project project={project} index={index}/>)
-			}
-		</div>
-	</section>
+		<div class="flex flex-wrap justify-center gap-2 mb-10">
+      {
+        ALL_CATEGORIES.map((cat: string) => (
+          <button 
+            class="px-4 py-2 text-md font-semibold rounded-full tracking-wide text-white bg-black/70 hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 ease-in-out" 
+            onclick={`filterCategory('${cat}')`}
+          >
+            {cat}
+          </button>
+        ))
+      }
+       </div>
+	<div id="projectsGrid" class="w-full grid place-content-center gap-8">
+      {
+        PROJECTS.map((project, index) => (
+          <div class="project-card" data-categories={project.categories.join(",")}>
+            <Project project={project} index={index}/>
+          </div>
+        ))
+      }
+    </div>
+</section>
+<script type="module">
+		function filterCategory(category) {
+			const cards = document.querySelectorAll(".project-card");
+			const buttons = document.querySelectorAll(".category-btn");
+			
+			// 🔹 Filtra los proyectos
+			cards.forEach(card => {
+				const cats = card.dataset.categories.split(",");
+				if (category === "Todos" || cats.includes(category)) {
+					card.style.display = "block";
+				} else {
+					card.style.display = "none";
+				}
+			});
+		}
+
+		// 🔹 Activa "Todos" al inicio
+		filterCategory("Todos");
+		window.filterCategory = filterCategory;
+</script>
 </BaseLayout>

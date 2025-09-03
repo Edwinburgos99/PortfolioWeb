@@ -17,20 +17,16 @@ const className= itShouldbeReverse ?
     <img src={urLImg} alt="Project image" width={128} height={128} class="w-full md:max-w-md h-72 object-cover object-center rounded-sm shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="document.getElementById('modal-img').src=this.src; document.getElementById('imgModal').showModal();"/>
     <div class="flex flex-col gap-2 flex 1">
         <div class="flex flex-col">
-            <h3 class="text-white text-xl md:text-2xl lg:text-3xl font-semibold">{title}</h3>
-            <a href={link} class=" underline text-blue-600 italic">{link}</a>
+            <h3 class="text-white italic text-2xl md:text-3xl lg:text-4xl font-semibold">{title}</h3>
         </div>
-        <div class="mt-2 flex flex-wrap gap-2">
+        <div class="mt-3 flex flex-wrap gap-2">
             {usedSkills.map((usedSkill) => <Skill skill={usedSkill} />)}
         </div>
-        <div class="mt-2 flex flex-wrap gap-2">
-            {categories.map((cat) => (
-                <span class="px-3 py-1 text-sm rounded-full bg-gray-700 text-white shadow-md">
-                    {cat}
-                </span>
-            ))}
-        </div>
-        <p class="text-pretty text-xl">{description}</p>
+        <p class="text-pretty text-xl text-white">{description}</p>
+        <a href={link} class="text-green-800 flex items-center gap-2 px-4 py-2 text-xl"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 13l-2 2 2 2m4-4l2 2-2 2" />
+        </svg>Ver Repositorio</a>
     </div>
 </div>
 
