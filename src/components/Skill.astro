@@ -6,14 +6,14 @@ interface Props {
 const {name, iconurl} = Astro.props.skill;
 const id = crypto.randomUUID();
 ---
-<div class="p-4 hover:shadow-lg hover:scale-110 transition rounded-lg bg-white dark:bg-gray-300">
+<div class="p-4 rounded-lg hover:shadow-lg hover:scale-110 transition bg-white/20 dark:bg-black/30">
     <img data-tooltip-target={id} 
     src={iconurl}
     alt="Skill"
     class="size-12"
 />
 
-<div id={id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-md font-light text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+<div id={id} role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-lg font-semibold text-white transition-opacity duration-300 bg-gray-600 rounded-lg shadow-md opacity-0 tooltip">
     {name}
     <div class="tooltip-arrow" data-popper-arrow></div>
 </div>

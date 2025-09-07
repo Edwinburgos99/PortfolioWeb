@@ -6,6 +6,7 @@ type Skill = {
 type Job = {
   date: string;
   title: string;
+  titleJob: string;
   description: string;
 };
 
