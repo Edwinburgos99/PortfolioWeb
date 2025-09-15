@@ -107,7 +107,7 @@ const ALL_CATEGORIES: string[] = ["Todos", ...new Set(PROJECTS.flatMap(p => p.ca
       {
         ALL_CATEGORIES.map((cat: string) => (
           <button 
-            class="px-4 py-2 text-sm md:text-md font-semibold tracking-wide rounded-lg bg-white/20 dark:bg-black/30 text-white bg-black/70 hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 ease-in-out" 
+            class="px-4 py-2 text-sm md:text-md font-semibold tracking-wide rounded-lg bg-white/20 dark:bg-black/30 text-white bg-black/70 hover:bg-white hover:text-black hover:scale-105 focus:bg-gray-200 focus:text-black focus:scale-105 active:bg-gray-300 active:text-black active:scale-95 transition-all duration-300 ease-in-out" 
             onclick={`filterCategory('${cat}')`}
           >
             {cat}
