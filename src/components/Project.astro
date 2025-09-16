@@ -14,7 +14,7 @@ const className= itShouldbeReverse ?
 ---
 
 <div class={className}>
-    <img src={urLImg} alt="Project image" width={128} height={128} class="w-full md:max-w-md h-72 object-cover object-center rounded-sm shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="document.getElementById('modal-img').src=this.src; document.getElementById('imgModal').showModal();"/>
+    <img src={urLImg} alt="Project image" width={128} height={128} class="w-full md:max-w-md h-72 object-cover object-center rounded-sm shadow-lg cursor-pointer transition-transform hover:scale-105" data-img={urLImg}/>
     <div class="flex flex-col gap-2 flex 1">
         <div class="flex flex-col">
             <h3 class="text-center text-3xl font-light tracking-wide text-white relative inline-block">{title}</h3>
@@ -29,13 +29,3 @@ const className= itShouldbeReverse ?
         </svg>Ver Repositorio</a>
     </div>
 </div>
-
-<dialog id="imgModal" class="backdrop:bg-black/70 p-0 rounded-sm">
-  <img id="modal-img" src="" alt="Zoomed project" class="max-h-[90vh] max-w-[90vw] rounded-sm"/>
-  <button 
-    onclick="document.getElementById('imgModal').close();" 
-    class="absolute top-2 right-2 bg-white px-1.5 py-0.05 rounded-md shadow-md hover:bg-gray-200"
-  >
-    ✕
-  </button>
-</dialog>

@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
 				iconurl: "/Python.svg"
 			},
 		],
-		categories: ["Personal", "Algoritmos", "Backend"],
+		categories: ["Académico","Personal", "Algoritmos", "Backend"],
 	},
 	{
 		title: "Angeles_del_Rio",
@@ -95,19 +95,30 @@ const PROJECTS: Project[] = [
 	},
 ];
 
-const ALL_CATEGORIES: string[] = ["Todos", ...new Set(PROJECTS.flatMap(p => p.categories))];
+const ALL_CATEGORIES: string[] = ["Todos", ...new Set(PROJECTS.flatMap(p => (p.categories)))];
 ---
+
+
+<dialog id="imgModal" class="backdrop:bg-black/70 p-0 rounded-sm relative">
+  <img id="modal-img" src="" alt="Zoomed project" class="max-h-[90vh] max-w-[90vw] rounded-sm"/>
+  <button 
+    id="closeModalBtn"
+    class="absolute top-2 right-2 bg-white px-1.5 py-0.05 rounded-md shadow-md hover:bg-gray-200"
+  >
+    ✕
+  </button>
+</dialog>
 
 <BaseLayout>
 	<section id="Projects" class="w-full px-6 md:px-20 shadow-xl py-4 mt-24">
 		<div class="flex justify-center">
-			<h3 class="text-center text-3xl md:text-4xl font-extrabold tracking-wide text-white relative inline-block mb-8">Proyectos</h3>
+			<h3 class="text-center text-3xl md:text-4xl font-extrabold tracking-tight text-white relative inline-block mb-8">Proyectos</h3>
 		</div>
 		<div class="flex flex-wrap justify-center gap-2 mb-10">
       {
         ALL_CATEGORIES.map((cat: string) => (
           <button 
-            class="px-4 py-2 text-sm md:text-md font-semibold tracking-wide rounded-lg bg-white/20 dark:bg-black/30 text-white bg-black/70 hover:bg-white hover:text-black hover:scale-105 focus:bg-gray-200 focus:text-black focus:scale-105 active:bg-gray-300 active:text-black active:scale-95 transition-all duration-300 ease-in-out" 
+            class="category-btn px-4 py-2 text-sm md:text-md font-semibold tracking-wide rounded-xl bg-white/20 dark:bg-black/30 text-white bg-black/70 hover:bg-white hover:text-black hover:scale-105 focus:bg-gray-200 focus:text-black focus:scale-105 active:bg-gray-300 active:text-black active:scale-95 transition-all duration-300 ease-in-out" 
             onclick={`filterCategory('${cat}')`}
           >
             {cat}
@@ -126,23 +137,33 @@ const ALL_CATEGORIES: string[] = ["Todos", ...new Set(PROJECTS.flatMap(p => p.ca
     </div>
 </section>
 <script type="module">
-		function filterCategory(category) {
-			const cards = document.querySelectorAll(".project-card");
-			const buttons = document.querySelectorAll(".category-btn");
-			
-			// 🔹 Filtra los proyectos
-			cards.forEach(card => {
-				const cats = card.dataset.categories.split(",");
-				if (category === "Todos" || cats.includes(category)) {
-					card.style.display = "block";
-				} else {
-					card.style.display = "none";
-				}
-			});
-		}
+  // --- Filtrado de categorías ---
+  function filterCategory(category) {
+    const cards = document.querySelectorAll(".project-card");
 
-		// 🔹 Activa "Todos" al inicio
-		filterCategory("Todos");
-		window.filterCategory = filterCategory;
+    cards.forEach(card => {
+      const cats = card.dataset.categories.split(",");
+      card.style.display = (category === "Todos" || cats.includes(category)) ? "block" : "none";
+    });
+  }
+
+  filterCategory("Todos");
+  window.filterCategory = filterCategory;
+
+  // --- Lógica del modal de imágenes ---
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modal-img");
+  const closeBtn = document.getElementById("closeModalBtn");
+
+  document.addEventListener("click", e => {
+    const target = e.target;
+    if (target.matches("img[data-img]")) {
+      modalImg.src = target.dataset.img;
+      modal.showModal();
+    }
+  });
+
+  closeBtn.addEventListener("click", () => modal.close());
 </script>
+
 </BaseLayout>
